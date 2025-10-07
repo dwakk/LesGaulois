@@ -9,11 +9,11 @@ public class Romain {
 		this.nom = nom;
 		this.force = force;
 	}
-	
+
 	public String getNom() {
 		return nom;
 	}
-	
+
 	public void parler(String texte) {
 		System.out.println(prendreParole() + "\"" + texte + "\"");
 	}
@@ -23,6 +23,8 @@ public class Romain {
 	}
 
 	public void recevoirCoup(int forceCoup) {
+		assert forceCoup > 0;
+		int forceAvant = force;
 		force = force - forceCoup;
 		if (force < 1) {
 			force = 0;
@@ -30,5 +32,15 @@ public class Romain {
 		} else {
 			parler("Aïe");
 		}
+		assert forceAvant > force;
+	}
+
+	private boolean isInvariantVerified() {
+		return force >= 0 ? true : false;
+	}
+
+	public static void main(String[] args) {
+		Romain minus = new Romain("minus", 6);
+		assert minus.isInvariantVerified();
 	}
 }
