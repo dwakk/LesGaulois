@@ -3,6 +3,7 @@ package test_fonctionnel;
 import personages.Druide;
 import personages.Gaulois;
 import personages.Romain;
+import personages.Village;
 
 public class TestGaulois {
 	public static void main(String[] args) {
@@ -28,5 +29,10 @@ public class TestGaulois {
 		for (int i = 0; i < 3; i++) {
 			asterix.frapper(brutus);
 		}
+		
+		Gaulois abraracourcix = new Gaulois("Abraracourcix", 5);
+		Village village = new Village("Village des Irréductibles", abraracourcix, 30);
+		village.ajouterVillageois(asterix);
+		asterix.sePresenter();
 	}
 }
